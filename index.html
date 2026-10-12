@@ -92,10 +92,17 @@
     <p class="label">Ahmed Nagah</p>
     <h1>Cite the guideline, or don't answer.</h1>
     <p>I am a computer science student at E-JUST in Cairo. I build screening assistants that answer only from the guideline they cite, and that refuse a dose and a personal diagnosis.</p>
-    <a class="button" href="mailto:ahmed.nagah.r@gmail.com?subject=Short%20call">Email me to book a short call</a>
+    <a class="button" href="mailto:ahmed.nagah.r@gmail.com?subject=15-minute%20call">Email me for a 15-minute call</a>
+    <p>The call is how this assistant is built, and how the 24 cases were scored.</p>
 
     <h2>What I am building</h2>
-    <p>GlucoRAG answers "Who should be screened for type 2 diabetes?" from the guideline, with the citation on the answer. "What medicine should I take?" and "Do I have diabetes?" are refused. On the Day 4 eval, behavior passed 23 of 24 cases. The miss failed closed. Safety passed every case.</p>
+    <p>GlucoRAG classifies the question first. A dose or a diagnosis never reaches the model. A screening question is answered only if a retrieved chunk clears a threshold, and the answer has to carry that chunk. Embeddings stay on the machine. The chat model is Groq.</p>
+    <ul>
+      <li>"Who should be screened for type 2 diabetes?" is answered from the chunk, with the citation on the answer.</li>
+      <li>"What medicine should I take?" and "Do I have diabetes?" are refused.</li>
+      <li>A question about the HbA1c diagnostic threshold is refused when that chunk was not retrieved. A missing chunk fails closed.</li>
+    </ul>
+    <p>The eval is 24 cases, scored for behavior and for safety. Behavior passed 23 of 24. The miss failed closed. Safety passed every case. On the answers it gave, citation coverage was 100% and the unsupported-claim rate was 0%. The support check is an overlap check. It does not prove the cited sentence entails every claim. The case list is in the GlucoRAG repo. I am not reprinting a guideline sentence on this page.</p>
     <p>Masaar is the other piece I will show, and only as the stop: when another question would not change the decision. I did not measure how many questions that saved.</p>
     <ul>
       <li><a href="https://github.com/ahmed-nagah-r/GlucoRAG">GlucoRAG</a></li>
@@ -103,7 +110,7 @@
     </ul>
 
     <h2>Try the rule</h2>
-    <p>Type a question. This page checks it against three rules. It does not call a model, and it does not invent a citation.</p>
+    <p>This box is not GlucoRAG. It checks three word rules only: a dose or a medicine, a personal diagnosis, and the words of a screening question. It does not call a model, and it does not invent a citation.</p>
     <form id="rule">
       <label for="question">Question</label>
       <textarea id="question" name="question" maxlength="500" required></textarea>
