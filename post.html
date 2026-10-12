@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A checker that reads first — Ahmed Nagah</title>
+  <meta name="description" content="The portfolio checker has to open the note and the draft before it can say publish. One hold is still wrong.">
+  <link rel="canonical" href="https://ahmed-nagah-r.github.io/cite-or-refuse/post.html">
+  <meta property="og:title" content="A checker that reads first — Ahmed Nagah">
+  <meta property="og:description" content="The checker has to open both files before it can say publish. The faithful draft still held.">
+  <meta property="og:url" content="https://ahmed-nagah-r.github.io/cite-or-refuse/post.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="A checker that reads first — Ahmed Nagah">
+  <meta name="twitter:description" content="The checker has to open both files before it can say publish. The faithful draft still held.">
+  <link rel="icon" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #F4F1EB; --text: #1C1915; --muted: #5C564C; --accent: #1F3A36; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Source Sans 3", sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.5;
+    }
+    main { max-width: 38rem; margin: 0 auto; padding: 3.5rem 1.25rem 3rem; }
+    nav a {
+      display: inline-block;
+      min-height: 44px;
+      line-height: 44px;
+      margin-right: 0.15rem;
+      padding: 0 0.85rem;
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    p, a { overflow-wrap: anywhere; }
+    h1 { margin: 0 0 1rem; font-size: 2rem; font-weight: 600; line-height: 1.15; }
+    p { margin: 0 0 1rem; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <main>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="https://github.com/ahmed-nagah-r/portfolio-check">Checker</a>
+    </nav>
+    <h1>A checker that reads first</h1>
+    <p>I wanted a check on my own case drafts. A model had already called a draft clean when the draft had invented a construction site. The job is one decision: publish or hold.</p>
+    <p>The decision I kept: the model does not get the files in the first message. It has to call read_file. If it says publish before both files were read, the code rejects that and sends it back. It cannot edit the note or the draft.</p>
+    <p>The limit I am leaving in: the faithful draft should publish. The note says Buy milk does not survive a restart, and the draft says the same thing. The second eval held it, and the reason said Buy milk is not in the note. Both files were read, so the code allowed the hold. I stopped rewriting the prompt.</p>
+    <p>The code also does not yet reject a reason that quotes a line the note does not contain. That check is in the spec. It is not in agent.py.</p>
+    <p>Cursor wrote the loop and this page with me. The hold and publish lines are from qwen2.5:7b on this machine. I checked them against the notes.</p>
+    <p><a href="https://github.com/ahmed-nagah-r/portfolio-check">The checker, the eval, and the demo.</a></p>
+  </main>
+</body>
+</html>
