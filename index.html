@@ -26,7 +26,7 @@
       line-height: 1.5;
     }
     main { max-width: 38rem; margin: 0 auto; padding: 3.5rem 1.25rem 5rem; }
-    p.label, nav {
+    p.label {
       margin: 0 0 1rem;
       color: var(--muted);
       font-size: 0.75rem;
@@ -34,7 +34,20 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-    nav a { color: var(--muted); margin-right: 0.9rem; }
+    nav { margin: 0 0 1rem; }
+    nav a {
+      display: inline-block;
+      min-height: 44px;
+      line-height: 44px;
+      margin-right: 0.15rem;
+      padding: 0 0.85rem;
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    p, li, a { overflow-wrap: anywhere; }
     h1 { margin: 0 0 1rem; font-size: 2rem; font-weight: 600; line-height: 1.15; }
     @media (min-width: 720px) { h1 { font-size: 2.75rem; } }
     h2 { margin: 2.25rem 0 0.6rem; font-size: 1.25rem; font-weight: 600; }
@@ -42,14 +55,30 @@
     a { color: var(--accent); }
     ul { margin: 0 0 1rem; padding-left: 1.1rem; }
     li { margin: 0.25rem 0; }
-    a.button {
+    a.button, button.button {
       display: inline-block;
+      min-height: 44px;
       background: var(--accent);
       color: var(--bg);
       text-decoration: none;
+      font: inherit;
       font-weight: 600;
       padding: 0.7rem 1rem;
       margin: 0.5rem 0 0;
+      border: 0;
+      cursor: pointer;
+      min-width: 7.5rem;
+    }
+    label { display: block; font-weight: 600; margin: 0 0 0.4rem; }
+    textarea {
+      display: block;
+      width: 100%;
+      min-height: 6.5rem;
+      padding: 0.6rem;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: inherit;
+      font: inherit;
     }
   </style>
 </head>
@@ -73,11 +102,42 @@
       <li><a href="https://github.com/ahmed-nagah-r/adaptive-assessment-internship-round-1">Masaar</a></li>
     </ul>
 
+    <h2>Try the rule</h2>
+    <p>Type a question. This page checks it against three rules. It does not call a model, and it does not invent a citation.</p>
+    <form id="rule">
+      <label for="question">Question</label>
+      <textarea id="question" name="question" maxlength="500" required></textarea>
+      <button class="button" type="submit">Check</button>
+    </form>
+    <p id="rule-result" aria-live="polite"></p>
+
     <h2>Notes</h2>
     <p>Nothing posted yet. This is the space for later writing.</p>
 
     <h2>Capstone</h2>
     <p>The capstone will sit here after it is approved. The FlyRank completion badge is not on this page yet. It is issued after the capstone, not before.</p>
   </main>
+  <script>
+    function classify(text) {
+      var value = text.trim().toLowerCase();
+      if (!value) {
+        return "There is no question, so this page will not answer.";
+      }
+      if (/dose|medicine|medication|insulin|metformin|how much/.test(value)) {
+        return "Refuse. This asks for a dose or a medicine.";
+      }
+      if (/do i have|am i diabetic|diagnosis|diagnos/.test(value)) {
+        return "Refuse. This asks for a personal diagnosis.";
+      }
+      if (/who should be screened|screening/.test(value)) {
+        return "This is a screening question. An answer still has to cite the guideline. This page does not supply one.";
+      }
+      return "Unsure. This is not one of the three rules, so this page will not guess.";
+    }
+    document.getElementById("rule").addEventListener("submit", function (event) {
+      event.preventDefault();
+      document.getElementById("rule-result").textContent = classify(document.getElementById("question").value);
+    });
+  </script>
 </body>
 </html>

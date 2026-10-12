@@ -20,7 +20,14 @@
     h2 { margin: 1.8rem 0 0.4rem; font-size: 1.15rem; font-weight: 600; }
     p, li { margin: 0 0 0.7rem; }
     a { color: var(--accent); }
+    p, a { overflow-wrap: anywhere; }
     .muted { color: var(--muted); }
+    .muted a {
+      display: inline-block;
+      min-height: 44px;
+      line-height: 44px;
+      padding: 0 0.7rem;
+    }
   </style>
 </head>
 <body>
