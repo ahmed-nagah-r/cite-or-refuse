@@ -25,12 +25,8 @@
       font-size: 1.125rem;
       line-height: 1.5;
     }
-    main {
-      max-width: 38rem;
-      margin: 0 auto;
-      padding: 4.5rem 1.25rem 5rem;
-    }
-    p.label {
+    main { max-width: 38rem; margin: 0 auto; padding: 3.5rem 1.25rem 5rem; }
+    p.label, nav {
       margin: 0 0 1rem;
       color: var(--muted);
       font-size: 0.75rem;
@@ -38,16 +34,14 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-    h1 {
-      margin: 0 0 1rem;
-      font-size: 2rem;
-      font-weight: 600;
-      line-height: 1.15;
-    }
-    @media (min-width: 720px) {
-      h1 { font-size: 2.75rem; }
-    }
-    p { margin: 0 0 1.5rem; }
+    nav a { color: var(--muted); margin-right: 0.9rem; }
+    h1 { margin: 0 0 1rem; font-size: 2rem; font-weight: 600; line-height: 1.15; }
+    @media (min-width: 720px) { h1 { font-size: 2.75rem; } }
+    h2 { margin: 2.25rem 0 0.6rem; font-size: 1.25rem; font-weight: 600; }
+    p { margin: 0 0 1rem; }
+    a { color: var(--accent); }
+    ul { margin: 0 0 1rem; padding-left: 1.1rem; }
+    li { margin: 0.25rem 0; }
     a.button {
       display: inline-block;
       background: var(--accent);
@@ -55,15 +49,35 @@
       text-decoration: none;
       font-weight: 600;
       padding: 0.7rem 1rem;
+      margin: 0.5rem 0 0;
     }
   </style>
 </head>
 <body>
   <main>
+    <nav>
+      <a href="https://www.linkedin.com/in/ahmed-nagah-r">LinkedIn</a>
+      <a href="https://github.com/ahmed-nagah-r">GitHub</a>
+      <a href="cv.html">CV</a>
+    </nav>
     <p class="label">Ahmed Nagah</p>
     <h1>Cite the guideline, or don't answer.</h1>
-    <p>The cases are not on this page yet.</p>
-    <a class="button" href="mailto:ahmed.nagah.r@gmail.com">Email me to book a short call</a>
+    <p>I am a computer science student at E-JUST in Cairo. I build screening assistants that answer only from the guideline they cite, and that refuse a dose and a personal diagnosis.</p>
+    <a class="button" href="mailto:ahmed.nagah.r@gmail.com?subject=Short%20call">Email me to book a short call</a>
+
+    <h2>What I am building</h2>
+    <p>GlucoRAG answers "Who should be screened for type 2 diabetes?" from the guideline, with the citation on the answer. "What medicine should I take?" and "Do I have diabetes?" are refused. On the Day 4 eval, behavior passed 23 of 24 cases. The miss failed closed. Safety passed every case.</p>
+    <p>Masaar is the other piece I will show, and only as the stop: when another question would not change the decision. I did not measure how many questions that saved.</p>
+    <ul>
+      <li><a href="https://github.com/ahmed-nagah-r/GlucoRAG">GlucoRAG</a></li>
+      <li><a href="https://github.com/ahmed-nagah-r/adaptive-assessment-internship-round-1">Masaar</a></li>
+    </ul>
+
+    <h2>Notes</h2>
+    <p>Nothing posted yet. This is the space for later writing.</p>
+
+    <h2>Capstone</h2>
+    <p>The capstone will sit here after it is approved. The FlyRank completion badge is not on this page yet. It is issued after the capstone, not before.</p>
   </main>
 </body>
 </html>
